@@ -6,6 +6,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "dev": "sanity dev",
+    "manage": "sanity manage",
     "start": "sanity start",
     "build": "sanity build",
     "deploy": "sanity deploy",
