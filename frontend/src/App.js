@@ -1,9 +1,15 @@
+import {Routes, Route, useNavigate} from "react-router-dom"
+
+
+import Login from './components/login';
+import Home from './components/home';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello World</h1>
-    </div>
+    <Routes>
+      <Route path="/*" element={<Home/>}/>
+      <Route path="/login" element={<Login/>}/>
+    </Routes>
   );
 }
 
