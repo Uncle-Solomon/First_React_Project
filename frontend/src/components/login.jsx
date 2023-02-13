@@ -62,7 +62,7 @@ const Login = () => {
     // client.Create();//{(doc)}
     
     client.createIfNotExists(doc)
-    .then(res => {
+    .then(() => {
       console.log('Document created with ID: ', jti);
       navigate('/')
     })
