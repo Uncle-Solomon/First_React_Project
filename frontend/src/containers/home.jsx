@@ -1,5 +1,4 @@
 import React, {useState, useRef, useEffect} from 'react'
-import jwtDecode from 'jwt-decode'
 import {HiMenu} from 'react-icons/hi'
 import {AiFillCloseCircle} from 'react-icons/ai'
 import {Link, Route, Routes} from'react-router-dom'
@@ -13,6 +12,7 @@ import logo from '../assets/logo.png'
 import Pins from './pins'
 
 import {UserQuery} from '../utils/data'
+import fetchUser from '../utils/fetchUser'
 
 
 
@@ -36,15 +36,11 @@ const Home = () => {
    
   const [user, setUser] = useState(null)
   
-  // const userInfo = localStorage.getItem('user') !== 'undefined' ? JSON.parse(localStorage.getItem('user')).userInfo: console.log("Something wrong")
-  const userInfo = JSON.parse(localStorage.getItem('user'))
-  // console.log(jwtDecode(userInfo))
-
-  const decoded = jwtDecode(userInfo)
-  
+  const userInfo = fetchUser()
+  // console.log(jwtDecode(userInfo))  
   
   useEffect(() => {
-    const query = UserQuery(decoded?.jti)
+    const query = UserQuery(userInfo?.jti)
   
     client.fetch(query)
       .then((data) => {

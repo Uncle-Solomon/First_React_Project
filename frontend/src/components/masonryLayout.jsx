@@ -1,6 +1,5 @@
 import React from 'react'
 import Masonry from 'react-masonry-css'
-import Nasonry from 'react-masonry-css'
 
 import Pin from './pin'
 
