@@ -55,6 +55,20 @@ const Pin = ({pin : {postedBy, image, _id, destination, save}}) => {
     }
   }
 
+  const deletePin = (id) => {
+    if (!alreadySaved) {
+      // setsavingPost(tAiTwotoneDeleterue)
+
+      client
+        .delete(id)
+        .commit()
+        .then(() => {
+          window.location.reload()
+          // setsavingPost(true)
+        })
+    }
+  }
+
   return (
     <div className='m-2'>
       <div
@@ -90,6 +104,32 @@ const Pin = ({pin : {postedBy, image, _id, destination, save}}) => {
               </button>
             )
             }
+          </div>
+          <div className='flex justify-between items-center gap-2 w-full'>
+            {destination && (
+              <a href={destination}
+              target="_blank"
+              rel='noreferrer'
+              className='bg-white flex items-center gap-2 text-black font-bold p-2 pl-4 pr-4 rounded-full opacity-70 hover:opacity-100 hover:shadow-md '
+              >
+                <BsFillArrowUpRightCircleFill /> 
+                {destination.length > 20 ? destination.slice(8,20): destination.slice(8)}
+              </a>
+            )}
+
+            {postedBy?._id === user.jti && (
+              <button
+              type='button' 
+              onClick={(e) => {
+                e.stopPropagation()
+                deletePin(_id)
+              }
+              }
+              className='bg-white p-2 opacity-75 hover:opacity-100 text-black font-bold px-5 py-1 text-base rounded-3xl hover:shadow-md outlined-none'
+              >
+                <AiTwotoneDelete />
+              </button>
+            )}
           </div>
         </div>
       )}
