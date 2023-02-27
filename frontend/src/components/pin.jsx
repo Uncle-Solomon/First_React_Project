@@ -117,7 +117,7 @@ const Pin = ({pin : {postedBy, image, _id, destination, save}}) => {
               </a>
             )}
 
-            {postedBy?._id === user.jti && (
+            {/* {postedBy?._id === user.jti && ( */}
               <button
               type='button' 
               onClick={(e) => {
@@ -125,15 +125,22 @@ const Pin = ({pin : {postedBy, image, _id, destination, save}}) => {
                 deletePin(_id)
               }
               }
-              className='bg-white p-2 opacity-75 hover:opacity-100 text-black font-bold px-5 py-1 text-base rounded-3xl hover:shadow-md outlined-none'
+              className='bg-white p-2 opacity-75 hover:opacity-100 text-black font-bold text-base rounded-3xl hover:shadow-md outlined-none'
               >
                 <AiTwotoneDelete />
               </button>
-            )}
+            {/* )} */}
           </div>
         </div>
       )}
       </div>
+      <Link to={`user-profile/${user?._id}`}
+      className="flex gap-2mt-2 items-center"
+      >
+        <img 
+        className="w-8 h-8 rounded-full object-cover" 
+        src={postedBy?.image} alt="" />
+      </Link>
     </div>
   )
 }
